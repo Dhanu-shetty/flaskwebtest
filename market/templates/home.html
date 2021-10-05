@@ -1,0 +1,98 @@
+{% extends 'layout.html' %}
+{% block content %}
+
+<style>
+
+.myblock{
+    border:1px solid black;
+    border-radius: 4%;
+    background: rgba(0,0,0,0.5);
+    margin-top:0%;
+    padding:3%;
+}
+.h1{
+    margin-bottom:5% ;
+    color:coral;
+}
+.mybtn{
+ background: rgba(0,0,0,0.5);
+}
+
+.final__dropdown{
+  position: relative;
+  z-index: 10;
+  display: inline-block;
+}
+  .final__dropdown__hover{
+    display: inline-block;
+    padding: 10px;
+    background-color:#323b40;
+    color: #ffffff;
+    border:0 solid #323b40;
+    cursor: pointer;
+  }
+  .final__dropdown__hover:hover{background-color: #222222;}
+  .final__dropdown__menu{
+    position: absolute;
+    display: none;
+    top: 100%;
+    left: 0;
+    min-width: 200px;
+    background-color: #ffffff;
+    color: #323b40;
+    box-shadow: 0 3px 2px rgba(0,0,0,0.3);
+  }
+  .final__dropdown:hover .final__dropdown__menu{display: block;}
+    .final__dropdown__menu a{
+      display: block;
+      padding: 10px;
+      text-decoration: none;
+      border-width: 0;
+      border-top: 1px solid #e0e0e0;
+    }
+    .final__dropdown__menu a:hover{
+      background-color:#f0f0f0;
+      color: #323b40;
+    }
+
+</style>
+<div class="container">
+    <div class="jumbotron">
+        <h1 class="display-4">Wellcome User!</h1>
+        <hr class="my-4">
+      </div>
+    <div class="row">
+        <div class="col-lg-3 col-md-3 col-sm-12"></div>
+        <div class="col-lg-6 col-md-6 col-sm-12 myblock">
+            <h1 class="h1">Order Details</h1>
+            <form action="/login" method="POST" class="form-group">
+            <div class="form-group">
+                <input type="text" name="Stockname" placeholder="Stockname" class="form-control">
+            </div>
+
+            
+            <div class="final__dropdown">
+              <button class="final__dropdown__hover">Dropdown</button>
+              <div class="final__dropdown__menu">
+                <a href="#"> > </a>
+                <a href="#"> < </a>
+                <a href="#"> = </a>
+              </div>
+            </div>
+            
+             <div class="form-group">
+                <input type="int" name="triger price" placeholder="triger price" class="form-control">
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-block btn-dark mybtn">Submit</button>
+                <a href="/signup" class="btn btn-block btn-dark  mybtn link">Order History</a>
+            </div>
+            </form>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-12"></div>
+    </div>
+        <p class="lead">
+          <a class="btn btn-primary btn-lg" href="/logout" role="button">Logout</a>
+        </p>
+</div>
+{% endblock %}
