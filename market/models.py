@@ -7,7 +7,7 @@ def load_user(user_id):
     return User.query.get(int(user_id))
 
 
-class User(db.Model):
+class User(db.Model,UserMixin):
     id = db.Column(db.Integer(), primary_key=True)
     username = db.Column(db.String(length=30), nullable=False, unique=True)
     email_address = db.Column(db.String(length=50), nullable=False, unique=True)
@@ -24,12 +24,7 @@ class User(db.Model):
         self.password_hash = bcrypt.generate_password_hash(plain_text_password).decode('utf-8')
 
     def check_password_correction(self, attempted_password):
-        retunrn_value = True
-        if self.password_hash == attempted_password:
-            retunrn_value = True
-        else:
-            retunrn_value = False
-        return retunrn_value
+        return bcrypt.check_password_hash(self.password_hash, attempted_password)
 
 
 class Item(db.Model):
