@@ -52,8 +52,10 @@ def login_page():
              #login_user(attempted_user)
              flash('Success! You are logged in as: ')
              flash(attempted_user.username, category='success')
-        return redirect(url_for('home_page'))
-        #else:
-         #   flash('Username and password are not match! Please try again', category='danger')
+             #flash(form.password.data, category='success')
+             #flash(attempted_user.password_hash, category='success')
+             return redirect(url_for('home_page'))
+        else:
+             flash('Username and password are not match! Please try again', category='danger')
 
     return render_template('login.html', form=form)

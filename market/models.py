@@ -24,7 +24,12 @@ class User(db.Model):
         self.password_hash = bcrypt.generate_password_hash(plain_text_password).decode('utf-8')
 
     def check_password_correction(self, attempted_password):
-        return True
+        retunrn_value = True
+        if self.password_hash == attempted_password:
+            retunrn_value = True
+        else:
+            retunrn_value = False
+        return retunrn_value
 
 
 class Item(db.Model):
